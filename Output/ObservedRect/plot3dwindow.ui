@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Plot3DWindow</class>
+ <widget class="QMainWindow" name="Plot3DWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>788</width>
+    <height>535</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>图形显示</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../windwalker.qrc">
+    <normaloff>:/Plot3D/images/Plot3D/qwtplot.png</normaloff>:/Plot3D/images/Plot3D/qwtplot.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Triangular</enum>
+      </property>
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>788</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="atn_Open"/>
+    <addaction name="atn_OpenFEM"/>
+    <addaction name="atn_Save"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>3D效果</string>
+    </property>
+    <widget class="QMenu" name="menu_BoxDetail">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>坐标盒子细节</string>
+     </property>
+     <addaction name="atn_Front"/>
+     <addaction name="atn_Back"/>
+     <addaction name="atn_Left"/>
+     <addaction name="atn_Right"/>
+     <addaction name="atn_Top"/>
+     <addaction name="atn_Bottom"/>
+    </widget>
+    <widget class="QMenu" name="menu_7">
+     <property name="title">
+      <string>数据显示风格</string>
+     </property>
+     <addaction name="atn_PointStyle"/>
+     <addaction name="atn_WireFrame"/>
+     <addaction name="atn_HiddenLine"/>
+     <addaction name="atn_Polygon"/>
+     <addaction name="atn_FilledMesh"/>
+     <addaction name="atn_NoData"/>
+    </widget>
+    <widget class="QMenu" name="menu_8">
+     <property name="title">
+      <string>投影风格</string>
+     </property>
+     <addaction name="atn_FloorNone"/>
+     <addaction name="atn_FloorData"/>
+     <addaction name="atn_FloorISO"/>
+    </widget>
+    <addaction name="atn_Box"/>
+    <addaction name="atn_Axis"/>
+    <addaction name="atn_AxisOff"/>
+    <addaction name="separator"/>
+    <addaction name="menu_BoxDetail"/>
+    <addaction name="menu_7"/>
+    <addaction name="menu_8"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Fit"/>
+    <addaction name="atn_Reset"/>
+    <addaction name="atn_Ortho"/>
+    <addaction name="atn_Light"/>
+    <addaction name="atn_Legend"/>
+    <addaction name="atn_AutoScale"/>
+    <addaction name="atn_Grad"/>
+    <addaction name="atn_Animation"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Option"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>图形</string>
+    </property>
+    <widget class="QMenu" name="menu_9">
+     <property name="title">
+      <string>测试</string>
+     </property>
+     <addaction name="atn_Hat"/>
+     <addaction name="atn_Rosenbrock"/>
+     <addaction name="atn_Ripple"/>
+     <addaction name="atn_Saddle"/>
+     <addaction name="atn_Sombrero"/>
+     <addaction name="atn_Torus"/>
+     <addaction name="atn_SeaShells"/>
+     <addaction name="atn_Boy"/>
+     <addaction name="atn_Dini"/>
+     <addaction name="atn_Cone"/>
+    </widget>
+    <addaction name="menu_9"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Compute"/>
+    <addaction name="atn_Touch"/>
+    <addaction name="atn_Step"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Touch_In"/>
+    <addaction name="action"/>
+    <addaction name="action_2"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Text"/>
+   </widget>
+   <widget class="QMenu" name="menu2D">
+    <property name="title">
+     <string>2D效果</string>
+    </property>
+    <addaction name="atn_Denggaoxian"/>
+    <addaction name="atn_Guangpu"/>
+    <addaction name="atn_Huijie"/>
+    <addaction name="atn_ShowConductor"/>
+    <addaction name="atn_ConductorText"/>
+    <addaction name="atn_PointVotage"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_6"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu2D"/>
+   <addaction name="menu_3"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_File">
+   <property name="windowTitle">
+    <string>文件工具栏</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="atn_Open"/>
+   <addaction name="atn_OpenFEM"/>
+   <addaction name="atn_Save"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar_3D">
+   <property name="windowTitle">
+    <string>3D视图工具栏</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="atn_Fit"/>
+   <addaction name="atn_Ortho"/>
+   <addaction name="atn_AutoScale"/>
+   <addaction name="atn_Light"/>
+   <addaction name="atn_Reset"/>
+   <addaction name="atn_Legend"/>
+   <addaction name="atn_Grad"/>
+   <addaction name="atn_Animation"/>
+   <addaction name="separator"/>
+   <addaction name="atn_Box"/>
+   <addaction name="atn_Axis"/>
+   <addaction name="atn_AxisOff"/>
+   <addaction name="separator"/>
+   <addaction name="atn_Front"/>
+   <addaction name="atn_Back"/>
+   <addaction name="atn_Left"/>
+   <addaction name="atn_Right"/>
+   <addaction name="atn_Top"/>
+   <addaction name="atn_Bottom"/>
+   <addaction name="separator"/>
+   <addaction name="atn_PointStyle"/>
+   <addaction name="atn_WireFrame"/>
+   <addaction name="atn_HiddenLine"/>
+   <addaction name="atn_FilledMesh"/>
+   <addaction name="atn_Polygon"/>
+   <addaction name="atn_NoData"/>
+   <addaction name="separator"/>
+   <addaction name="atn_FloorData"/>
+   <addaction name="atn_FloorISO"/>
+   <addaction name="atn_FloorNone"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_2D">
+   <property name="windowTitle">
+    <string>2D视图工具栏</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="atn_Denggaoxian"/>
+   <addaction name="atn_Guangpu"/>
+   <addaction name="atn_Huijie"/>
+   <addaction name="separator"/>
+   <addaction name="atn_ShowConductor"/>
+   <addaction name="atn_PointVotage"/>
+   <addaction name="atn_ConductorText"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_SelectView">
+   <property name="windowTitle">
+    <string>视图选择工具栏</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>48</width>
+     <height>48</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="atn_Compute"/>
+   <addaction name="atn_Touch"/>
+   <addaction name="atn_Step"/>
+   <addaction name="atn_Touch_In"/>
+   <addaction name="atn_Text"/>
+  </widget>
+  <action name="atn_Open">
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/fileopen.png</normaloff>:/Plot3D/images/Plot3D/fileopen.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开文件</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="atn_OpenFEM">
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/filecell.png</normaloff>:/Plot3D/images/Plot3D/filecell.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开FEM文件</string>
+   </property>
+  </action>
+  <action name="atn_Animation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/movie.png</normaloff>:/Plot3D/images/Plot3D/movie.png</iconset>
+   </property>
+   <property name="text">
+    <string>主视图自旋</string>
+   </property>
+  </action>
+  <action name="atn_Exit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="atn_Save">
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/savecontent.png</normaloff>:/Plot3D/images/Plot3D/savecontent.png</iconset>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="atn_Hat">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Hat</string>
+   </property>
+  </action>
+  <action name="atn_Rosenbrock">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Rosenbrock</string>
+   </property>
+  </action>
+  <action name="atn_Ripple">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ripple</string>
+   </property>
+  </action>
+  <action name="atn_Saddle">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Saddle</string>
+   </property>
+  </action>
+  <action name="atn_Sombrero">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Sombrero</string>
+   </property>
+  </action>
+  <action name="atn_Torus">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Torus</string>
+   </property>
+  </action>
+  <action name="atn_SeaShells">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>SeaShell</string>
+   </property>
+  </action>
+  <action name="atn_Boy">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Boy</string>
+   </property>
+  </action>
+  <action name="atn_Dini">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dini</string>
+   </property>
+  </action>
+  <action name="atn_Cone">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Cone</string>
+   </property>
+  </action>
+  <action name="atn_Box">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/box.png</normaloff>:/Plot3D/images/Plot3D/box.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示坐标盒子</string>
+   </property>
+  </action>
+  <action name="atn_Axis">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/frame.png</normaloff>:/Plot3D/images/Plot3D/frame.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示坐标轴</string>
+   </property>
+  </action>
+  <action name="atn_AxisOff">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/grid.png</normaloff>:/Plot3D/images/Plot3D/grid.png</iconset>
+   </property>
+   <property name="text">
+    <string>清除坐标</string>
+   </property>
+  </action>
+  <action name="atn_Front">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/gridfr.png</normaloff>:/Plot3D/images/Plot3D/gridfr.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示前端坐标</string>
+   </property>
+  </action>
+  <action name="atn_Back">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/gridb.png</normaloff>:/Plot3D/images/Plot3D/gridb.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示后端坐标</string>
+   </property>
+  </action>
+  <action name="atn_Left">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/gridl.png</normaloff>:/Plot3D/images/Plot3D/gridl.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示左端坐标</string>
+   </property>
+   <property name="toolTip">
+    <string>显示左端坐标</string>
+   </property>
+  </action>
+  <action name="atn_Right">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/gridr.png</normaloff>:/Plot3D/images/Plot3D/gridr.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示右端坐标</string>
+   </property>
+   <property name="toolTip">
+    <string>显示右端坐标</string>
+   </property>
+  </action>
+  <action name="atn_Top">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/gridc.png</normaloff>:/Plot3D/images/Plot3D/gridc.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示上端坐标</string>
+   </property>
+   <property name="toolTip">
+    <string>显示上端坐标</string>
+   </property>
+  </action>
+  <action name="atn_Bottom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/gridf.png</normaloff>:/Plot3D/images/Plot3D/gridf.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示下端坐标</string>
+   </property>
+   <property name="toolTip">
+    <string>显示下端坐标</string>
+   </property>
+  </action>
+  <action name="atn_PointStyle">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/scattered.png</normaloff>:/Plot3D/images/Plot3D/scattered.png</iconset>
+   </property>
+   <property name="text">
+    <string>点</string>
+   </property>
+  </action>
+  <action name="atn_Polygon">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/polygon.png</normaloff>:/Plot3D/images/Plot3D/polygon.png</iconset>
+   </property>
+   <property name="text">
+    <string>多边形</string>
+   </property>
+   <property name="toolTip">
+    <string>多边形</string>
+   </property>
+  </action>
+  <action name="atn_WireFrame">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/wireframe.png</normaloff>:/Plot3D/images/Plot3D/wireframe.png</iconset>
+   </property>
+   <property name="text">
+    <string>线框(无遮蔽)</string>
+   </property>
+   <property name="toolTip">
+    <string>线框(无遮蔽)</string>
+   </property>
+  </action>
+  <action name="atn_FilledMesh">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/filledmesh.png</normaloff>:/Plot3D/images/Plot3D/filledmesh.png</iconset>
+   </property>
+   <property name="text">
+    <string>填充的网格</string>
+   </property>
+  </action>
+  <action name="atn_HiddenLine">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/hiddenline.png</normaloff>:/Plot3D/images/Plot3D/hiddenline.png</iconset>
+   </property>
+   <property name="text">
+    <string>线框(有遮蔽)</string>
+   </property>
+   <property name="toolTip">
+    <string>线框(有遮蔽)</string>
+   </property>
+  </action>
+  <action name="atn_NoData">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/nodata.png</normaloff>:/Plot3D/images/Plot3D/nodata.png</iconset>
+   </property>
+   <property name="text">
+    <string>隐藏数据</string>
+   </property>
+  </action>
+  <action name="atn_FloorNone">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/floorempty.png</normaloff>:/Plot3D/images/Plot3D/floorempty.png</iconset>
+   </property>
+   <property name="text">
+    <string>无投影</string>
+   </property>
+  </action>
+  <action name="atn_FloorData">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/floordata.png</normaloff>:/Plot3D/images/Plot3D/floordata.png</iconset>
+   </property>
+   <property name="text">
+    <string>数据</string>
+   </property>
+  </action>
+  <action name="atn_FloorISO">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/flooriso.png</normaloff>:/Plot3D/images/Plot3D/flooriso.png</iconset>
+   </property>
+   <property name="text">
+    <string>ISO</string>
+   </property>
+  </action>
+  <action name="atn_Grad">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/normals.png</normaloff>:/Plot3D/images/Plot3D/normals.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示梯度</string>
+   </property>
+  </action>
+  <action name="atn_Reset">
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/reset.png</normaloff>:/Plot3D/images/Plot3D/reset.png</iconset>
+   </property>
+   <property name="text">
+    <string>主视图还原</string>
+   </property>
+  </action>
+  <action name="atn_Option">
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/settings.png</normaloff>:/Plot3D/images/Plot3D/settings.png</iconset>
+   </property>
+   <property name="text">
+    <string>3D视图设置...</string>
+   </property>
+   <property name="toolTip">
+    <string>设置...</string>
+   </property>
+  </action>
+  <action name="atn_Ortho">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/orthogonal.png</normaloff>:/Plot3D/images/Plot3D/orthogonal.png</iconset>
+   </property>
+   <property name="text">
+    <string>使用正交视图</string>
+   </property>
+  </action>
+  <action name="atn_Light">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/light.png</normaloff>:/Plot3D/images/Plot3D/light.png</iconset>
+   </property>
+   <property name="text">
+    <string>使用光源</string>
+   </property>
+  </action>
+  <action name="atn_Legend">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/colorBar.png</normaloff>:/Plot3D/images/Plot3D/colorBar.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示图例</string>
+   </property>
+  </action>
+  <action name="atn_AutoScale">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/autoscale.png</normaloff>:/Plot3D/images/Plot3D/autoscale.png</iconset>
+   </property>
+   <property name="text">
+    <string>使用自动坐标</string>
+   </property>
+  </action>
+  <action name="atn_Compute">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/hip.png</normaloff>:/Other/images/Other/hip.png</iconset>
+   </property>
+   <property name="text">
+    <string>地表电势</string>
+   </property>
+  </action>
+  <action name="atn_Touch">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/卡通动物图标下载2.png</normaloff>:/Other/images/Other/卡通动物图标下载2.png</iconset>
+   </property>
+   <property name="text">
+    <string>接触电压</string>
+   </property>
+   <property name="toolTip">
+    <string>接触电压</string>
+   </property>
+  </action>
+  <action name="atn_Step">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/卡通动物图标下载5.png</normaloff>:/Other/images/Other/卡通动物图标下载5.png</iconset>
+   </property>
+   <property name="text">
+    <string>跨步电压</string>
+   </property>
+  </action>
+  <action name="atn_Touch_In">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/卡通动物图标下载1.png</normaloff>:/Other/images/Other/卡通动物图标下载1.png</iconset>
+   </property>
+   <property name="text">
+    <string>围墙内接触电压</string>
+   </property>
+   <property name="toolTip">
+    <string>围墙内接触电压</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>三维图形</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>二维图形</string>
+   </property>
+   <property name="toolTip">
+    <string>二维图形</string>
+   </property>
+  </action>
+  <action name="atn_Denggaoxian">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/earth.png</normaloff>:/Other/images/Other/earth.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示等高线</string>
+   </property>
+  </action>
+  <action name="atn_Guangpu">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/Chess.png</normaloff>:/Other/images/Other/Chess.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示光谱图</string>
+   </property>
+  </action>
+  <action name="atn_Huijie">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/earth_black.png</normaloff>:/Other/images/Other/earth_black.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示灰阶</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>帮助索引...</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>关于...</string>
+   </property>
+  </action>
+  <action name="atn_Text">
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/text.png</normaloff>:/Other/images/Other/text.png</iconset>
+   </property>
+   <property name="text">
+    <string>文本输出</string>
+   </property>
+  </action>
+  <action name="atn_ShowConductor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Other/images/Other/grid.png</normaloff>:/Other/images/Other/grid.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示网格</string>
+   </property>
+  </action>
+  <action name="atn_ConductorText">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/text.png</normaloff>:/Plot3D/images/Plot3D/text.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示导体信息</string>
+   </property>
+  </action>
+  <action name="atn_Fit">
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/zoom_best_fit.png</normaloff>:/GroundingCAD/images/GroundingCAD/zoom_best_fit.png</iconset>
+   </property>
+   <property name="text">
+    <string>最适合视图</string>
+   </property>
+  </action>
+  <action name="atn_PointVotage">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../windwalker.qrc">
+     <normaloff>:/Plot3D/images/Plot3D/circle.png</normaloff>:/Plot3D/images/Plot3D/circle.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示电压节点</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../../windwalker.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>atn_Box</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>atn_Back</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>atn_Box</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>atn_Bottom</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>atn_Box</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>atn_Front</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>atn_Box</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>atn_Left</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>atn_Box</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>atn_Right</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>atn_Box</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>atn_Top</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>atn_Exit</sender>
+   <signal>triggered()</signal>
+   <receiver>Plot3DWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>365</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

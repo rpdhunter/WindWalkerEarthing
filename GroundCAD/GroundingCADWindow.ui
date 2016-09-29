@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GroundingCADWindow</class>
+ <widget class="QMainWindow" name="GroundingCADWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>491</height>
+   </rect>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>GroundCAD</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../windwalker.qrc">
+    <normaloff>:/Other/images/Other/grid.png</normaloff>:/Other/images/Other/grid.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QMdiArea" name="mdiArea">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>443</width>
+      <height>412</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>700</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_F">
+    <property name="title">
+     <string>文件(&amp;F)</string>
+    </property>
+    <addaction name="atn_New"/>
+    <addaction name="atn_Open"/>
+    <addaction name="atn_Save"/>
+    <addaction name="atn_SaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Print"/>
+    <addaction name="atn_Last"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Close"/>
+    <addaction name="atn_Quit"/>
+   </widget>
+   <widget class="QMenu" name="menu_E">
+    <property name="title">
+     <string>编辑(&amp;E)</string>
+    </property>
+    <addaction name="atn_Cut"/>
+    <addaction name="atn_Copy"/>
+    <addaction name="atn_Paste"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Del"/>
+    <addaction name="separator"/>
+    <addaction name="atn_All"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Point"/>
+    <addaction name="atn_Pen"/>
+    <addaction name="atn_Hand"/>
+    <addaction name="separator"/>
+    <addaction name="atn_Group"/>
+    <addaction name="atn_CancelGroup"/>
+    <addaction name="atn_fixed"/>
+    <addaction name="atn_CancelFix"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menu_D">
+    <property name="title">
+     <string>设计(&amp;D)</string>
+    </property>
+    <addaction name="atn_AddObject"/>
+    <addaction name="separator"/>
+    <addaction name="atn_translate"/>
+    <addaction name="atn_rotate"/>
+    <addaction name="atn_scale"/>
+    <addaction name="separator"/>
+    <addaction name="action_2"/>
+    <addaction name="atn_check"/>
+    <addaction name="atn_dataCut"/>
+    <addaction name="separator"/>
+    <addaction name="atn_EditConductor"/>
+    <addaction name="atn_EditObLine"/>
+    <addaction name="atn_DelObLine"/>
+    <addaction name="atn_features"/>
+    <addaction name="atn_Power"/>
+   </widget>
+   <widget class="QMenu" name="menu_V">
+    <property name="title">
+     <string>视图(&amp;V)</string>
+    </property>
+    <addaction name="atn_zoomin"/>
+    <addaction name="atn_zoomout"/>
+    <addaction name="acn_Zoom1"/>
+    <addaction name="atn_fit"/>
+    <addaction name="separator"/>
+    <addaction name="atn_OBShow"/>
+   </widget>
+   <widget class="QMenu" name="menu_H">
+    <property name="title">
+     <string>帮助(&amp;H)</string>
+    </property>
+    <addaction name="action"/>
+    <addaction name="action_3"/>
+   </widget>
+   <addaction name="menu_F"/>
+   <addaction name="menu_E"/>
+   <addaction name="menu_V"/>
+   <addaction name="menu_D"/>
+   <addaction name="menu_H"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>文件</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="atn_New"/>
+   <addaction name="atn_Open"/>
+   <addaction name="atn_Save"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockWidget_datalist">
+   <property name="windowTitle">
+    <string>导体清单</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTableView" name="tableView_data">
+       <property name="contextMenuPolicy">
+        <enum>Qt::CustomContextMenu</enum>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="tabKeyNavigation">
+        <bool>true</bool>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>false</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>50</number>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderCascadingSectionResizes">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>20</number>
+       </attribute>
+       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderStretchLastSection">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="editlBar">
+   <property name="windowTitle">
+    <string>编辑</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="atn_Cut"/>
+   <addaction name="atn_Copy"/>
+   <addaction name="atn_Paste"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="designBar">
+   <property name="windowTitle">
+    <string>设计</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="atn_Point"/>
+   <addaction name="atn_Pen"/>
+   <addaction name="atn_Hand"/>
+   <addaction name="separator"/>
+   <addaction name="atn_OBShow"/>
+   <addaction name="atn_zoomin"/>
+   <addaction name="atn_zoomout"/>
+   <addaction name="acn_Zoom1"/>
+   <addaction name="atn_fit"/>
+   <addaction name="separator"/>
+   <addaction name="atn_AddObject"/>
+   <addaction name="atn_Power"/>
+   <addaction name="atn_check"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_cut">
+   <property name="windowTitle">
+    <string>切割后导体清单</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTableView" name="tableView_cut">
+       <property name="alternatingRowColors">
+        <bool>false</bool>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderCascadingSectionResizes">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>20</number>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_ObLine">
+   <property name="windowTitle">
+    <string>观测线清单</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTableView" name="tableView_Ob">
+       <property name="contextMenuPolicy">
+        <enum>Qt::CustomContextMenu</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_Power">
+   <property name="windowTitle">
+    <string>电源清单</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_4">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTableView" name="tableView_Power">
+       <property name="contextMenuPolicy">
+        <enum>Qt::CustomContextMenu</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="atn_New">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/new.png</normaloff>:/GroundingCAD/images/GroundingCAD/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>新建(&amp;N)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="atn_Open">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/open.png</normaloff>:/GroundingCAD/images/GroundingCAD/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开(&amp;O)...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="atn_Save">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/save.png</normaloff>:/GroundingCAD/images/GroundingCAD/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>保存(&amp;S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="atn_SaveAs">
+   <property name="text">
+    <string>另存为(&amp;A)...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="atn_Close">
+   <property name="text">
+    <string>关闭(&amp;C)</string>
+   </property>
+  </action>
+  <action name="atn_Cut">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/cut.png</normaloff>:/GroundingCAD/images/GroundingCAD/cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>剪切</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="atn_Copy">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/copy_v2.png</normaloff>:/GroundingCAD/images/GroundingCAD/copy_v2.png</iconset>
+   </property>
+   <property name="text">
+    <string>复制</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="atn_Paste">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/paste.png</normaloff>:/GroundingCAD/images/GroundingCAD/paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>粘贴</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="atn_Last">
+   <property name="text">
+    <string>最近访问的文件</string>
+   </property>
+  </action>
+  <action name="atn_Print">
+   <property name="text">
+    <string>打印(&amp;P)...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="atn_Del">
+   <property name="text">
+    <string>删除</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="atn_All">
+   <property name="text">
+    <string>全选</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="atn_Quit">
+   <property name="text">
+    <string>退出(&amp;Q)</string>
+   </property>
+  </action>
+  <action name="atn_AddObject">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/add.png</normaloff>:/GroundingCAD/images/GroundingCAD/add.png</iconset>
+   </property>
+   <property name="text">
+    <string>添加对象(&amp;A)...</string>
+   </property>
+   <property name="toolTip">
+    <string>添加对象</string>
+   </property>
+  </action>
+  <action name="atn_AddObLine">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/orb_plus.png</normaloff>:/GroundingCAD/images/GroundingCAD/orb_plus.png</iconset>
+   </property>
+   <property name="text">
+    <string>添加观测线...</string>
+   </property>
+  </action>
+  <action name="atn_translate">
+   <property name="text">
+    <string>平移...</string>
+   </property>
+  </action>
+  <action name="atn_rotate">
+   <property name="text">
+    <string>旋转...</string>
+   </property>
+  </action>
+  <action name="atn_scale">
+   <property name="text">
+    <string>缩放...</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>参数设置(&amp;O)...</string>
+   </property>
+  </action>
+  <action name="atn_zoomin">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/zoom_in.png</normaloff>:/GroundingCAD/images/GroundingCAD/zoom_in.png</iconset>
+   </property>
+   <property name="text">
+    <string>放大</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+=</string>
+   </property>
+  </action>
+  <action name="atn_zoomout">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/zoom_out.png</normaloff>:/GroundingCAD/images/GroundingCAD/zoom_out.png</iconset>
+   </property>
+   <property name="text">
+    <string>缩小</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="acn_Zoom1">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/zoom_best_fit.png</normaloff>:/GroundingCAD/images/GroundingCAD/zoom_best_fit.png</iconset>
+   </property>
+   <property name="text">
+    <string>还原</string>
+   </property>
+  </action>
+  <action name="atn_fit">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/preview.png</normaloff>:/GroundingCAD/images/GroundingCAD/preview.png</iconset>
+   </property>
+   <property name="text">
+    <string>适合大小</string>
+   </property>
+  </action>
+  <action name="atn_check">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/play.png</normaloff>:/GroundingCAD/images/GroundingCAD/play.png</iconset>
+   </property>
+   <property name="text">
+    <string>缺陷检查...</string>
+   </property>
+  </action>
+  <action name="atn_dataCut">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/pause.png</normaloff>:/GroundingCAD/images/GroundingCAD/pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>切割</string>
+   </property>
+  </action>
+  <action name="atn_Point">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/pointer.png</normaloff>:/GroundingCAD/images/GroundingCAD/pointer.png</iconset>
+   </property>
+   <property name="text">
+    <string>指针工具</string>
+   </property>
+  </action>
+  <action name="atn_Hand">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/hand_tool.png</normaloff>:/GroundingCAD/images/GroundingCAD/hand_tool.png</iconset>
+   </property>
+   <property name="text">
+    <string>手形工具</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>索引...</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>关于...</string>
+   </property>
+  </action>
+  <action name="atn_Group">
+   <property name="text">
+    <string>组合</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="atn_CancelGroup">
+   <property name="text">
+    <string>取消组合</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+G</string>
+   </property>
+  </action>
+  <action name="atn_fixed">
+   <property name="text">
+    <string>固定</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
+   </property>
+  </action>
+  <action name="atn_CancelFix">
+   <property name="text">
+    <string>取消固定</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+2</string>
+   </property>
+  </action>
+  <action name="atn_EditConductor">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/edit.png</normaloff>:/GroundingCAD/images/GroundingCAD/edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>编辑导体</string>
+   </property>
+   <property name="toolTip">
+    <string>编辑单根导体</string>
+   </property>
+  </action>
+  <action name="atn_Pen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/pencil.png</normaloff>:/GroundingCAD/images/GroundingCAD/pencil.png</iconset>
+   </property>
+   <property name="text">
+    <string>铅笔工具</string>
+   </property>
+  </action>
+  <action name="atn_OBShow">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/eye.png</normaloff>:/GroundingCAD/images/GroundingCAD/eye.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示观测面和围墙</string>
+   </property>
+   <property name="toolTip">
+    <string>显示观测面和围墙</string>
+   </property>
+  </action>
+  <action name="atn_EditObLine">
+   <property name="text">
+    <string>编辑观测线</string>
+   </property>
+  </action>
+  <action name="atn_DelObLine">
+   <property name="text">
+    <string>删除观测线</string>
+   </property>
+  </action>
+  <action name="atn_features">
+   <property name="text">
+    <string>批量修改导体特性...</string>
+   </property>
+  </action>
+  <action name="atn_Power">
+   <property name="icon">
+    <iconset resource="../windwalker.qrc">
+     <normaloff>:/GroundingCAD/images/GroundingCAD/linghtning.png</normaloff>:/GroundingCAD/images/GroundingCAD/linghtning.png</iconset>
+   </property>
+   <property name="text">
+    <string>添加/编辑电源</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../windwalker.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>atn_Quit</sender>
+   <signal>triggered()</signal>
+   <receiver>GroundingCADWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
